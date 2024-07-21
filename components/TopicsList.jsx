@@ -38,20 +38,25 @@ const getTopics = async () => {
 
 export default async function TopicsList() {
   const { topics } = await getTopics();
+  console.log("Topics: ", topics);
 
   return (
     <>
       {topics.map((t) => (
         <div
           key={t._id}
-          className="p-4 border border-slate-300 my-3 flex justify-between gap-5 items-start"
+          className="p-4 border border-slate-300 my-3 flex justify-between gap-5 items-center"
         >
           <div>
-            <h2 className="font-bold text-2xl">{t.title}</h2>
-            <div>{t.description}</div>
+            <h2 className="font-bold text-2xl">{t.name}</h2>
+            <div className="text-slate-500 gap-1">
+              ⏲️{t.age} yrs 👨‍👩‍👧‍👦{t.gender} #️⃣{t.ipNumber} ⚡{t.diagnosis} 🛏️
+              {t.procedure} 🗣️{t.preOpInvestigation}
+              🚩{t.postOpFollowUp}
+            </div>
           </div>
 
-          <div className="flex gap-2">
+          <div className="flex gap-4 ">
             <RemoveBtn id={t._id} />
             <Link href={`/editTopic/${t._id}`}>
               <HiPencilAlt size={24} />

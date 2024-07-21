@@ -2,8 +2,16 @@ import mongoose, { Schema } from "mongoose";
 
 const topicSchema = new Schema(
   {
-    title: String,
-    description: String,
+    name: String,
+    age: String,
+    gender: String,
+    ipNumber: String,
+    preOpExamVideo: String,
+    preOpInvestigation: String,
+    diagnosis: String,
+    procedure: String,
+    intraOpVideo: String,
+    postOpFollowUp: String,
   },
   {
     timestamps: true,

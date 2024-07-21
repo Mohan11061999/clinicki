@@ -3,9 +3,31 @@ import Topic from "@/models/topic";
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
-  const { title, description } = await request.json();
+  const {
+    name,
+    age,
+    gender,
+    ipNumber,
+    preOpExamVideo,
+    preOpInvestigation,
+    diagnosis,
+    procedure,
+    intraOpVideo,
+    postOpFollowUp,
+  } = await request.json();
   await connectMongoDB();
-  await Topic.create({ title, description });
+  await Topic.create({
+    name,
+    age,
+    gender,
+    ipNumber,
+    preOpExamVideo,
+    preOpInvestigation,
+    diagnosis,
+    procedure,
+    intraOpVideo,
+    postOpFollowUp,
+  });
   return NextResponse.json({ message: "Topic Created" }, { status: 201 });
 }
 
