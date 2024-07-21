@@ -11,14 +11,14 @@ export default function AddTopic() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
     if (!title || !description) {
       alert("Title and description are required.");
       return;
     }
 
     try {
-      const res = await fetch("http://localhost:3000/api/topics", {
+      const res = await fetch(`${apiUrl}/api/topics`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
