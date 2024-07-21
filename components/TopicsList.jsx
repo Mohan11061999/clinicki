@@ -2,9 +2,25 @@ import Link from "next/link";
 import RemoveBtn from "./RemoveBtn";
 import { HiPencilAlt } from "react-icons/hi";
 
+// const getTopics = async () => {
+//   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+//   try {
+//     const res = await fetch(`${apiUrl}/api/topics`, {
+//       cache: "no-store",
+//     });
+
+//     if (!res.ok) {
+//       throw new Error("Failed to fetch topics");
+//     }
+
+//     return res.json();
+//   } catch (error) {
+//     console.log("Error loading topics: ", error);
+//   }
+// };
 const getTopics = async () => {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   try {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
     const res = await fetch(`${apiUrl}/api/topics`, {
       cache: "no-store",
     });
@@ -16,6 +32,7 @@ const getTopics = async () => {
     return res.json();
   } catch (error) {
     console.log("Error loading topics: ", error);
+    return { topics: [] }; // Return an empty array in case of an error
   }
 };
 
